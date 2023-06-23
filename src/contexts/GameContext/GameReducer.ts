@@ -10,15 +10,8 @@ export const GameReducer = (state: GameState, action: GameActions): GameState =>
 
 const GameReducerInner = (state: GameState, action: GameActions): GameState => {
   switch (action.type) {
-    case 'StartGame':
-      // shuffle cards here
-      return {
-        ...initialState,
-        cards: initialState.cards
-          .map((c) => ({ val: c, order: Math.random() }))
-          .sort((a, b) => a.order - b.order)
-          .map((o) => ({ ...o.val })),
-      }
+    case 'StartGame':      
+      return initialState()        
 
     case 'FlipCard':
       // if card is flipped or guessed: return
